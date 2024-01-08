@@ -1,7 +1,7 @@
 [submodule "vendor/unity"]
 	path = vendor/unity
-	url = https://github.com/throwtheswitch/unity.git
-	branch = master
+	url = git@github.com:thoroai/Unity.git
+	branch = main
 [submodule "vendor/c_exception"]
 	path = vendor/c_exception
 	url = https://github.com/throwtheswitch/cexception.git
