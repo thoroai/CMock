@@ -1,0 +1,35 @@
+# This is a custom config file used to override the default config to create mocks accordingly
+:cmock:
+    :framework: :unity
+    :plugins:
+      - 'expect'
+      - 'expect_any_args'
+      - 'ignore'
+      - 'ignore_arg'
+      - 'array'
+      - 'return_thru_ptr'
+    :treat_externs: :include
+    :when_no_prototypes: ignore
+    :enforce_strict_ordering: true
+    :mock_path: 'mocks'
+    :mock_prefix: 'mock_'
+    :mock_suffix: ''
+    :strippables:
+      - 'STATIC'
+      - 'INLINE'
+      - 'INTERRUPT'
+      - '__inline__'
+      # CMock doesn't know how to parse function macros so get rid of them with some regex magic
+      - '(WORKING_AREA)((.*))'
+      - '(?<!,.)(void...freefn..void....)'
+      # these use doubles and we don't support those. But somehow there's symbols for them in our actual project
+      - 'int.nvbridge_api_update_double.struct.nvbridge_api_ctx..ctx..const.char..name..uint16_t.len..double.d..'
+      - 'int.nvbridge_api_update_double_sync.struct.nvbridge_api_ctx..ctx..const.char..name..uint16_t.len..double.d..'
+      # these are helper functions created for unit testing, don't mock them cuz cmock doesn't like their parameters
+      - 'void.canserver_test_disconnect.void..'
+      - 'void.canserver_test_connect.void..'
+      - 'canicd_emcy_code_t..canserver_get_cached_emcy_messages.void..'
+      - 'struct.can_state..canserver_get_st_ctx.void..'
+    :attributes:
+      - 'always_inline'
+    :weak: '__attribute ((weak))'
