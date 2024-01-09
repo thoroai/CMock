@@ -23,8 +23,8 @@
       - '(WORKING_AREA)((.*))'
       - '(?<!,.)(void...freefn..void....)'
       # these use doubles and we don't support those. But somehow there's symbols for them in our actual project
-      - 'int.nvbridge_api_update_double.struct.nvbridge_api_ctx..ctx..const.char..name..uint16_t.len..double.d..'
-      - 'int.nvbridge_api_update_double_sync.struct.nvbridge_api_ctx..ctx..const.char..name..uint16_t.len..double.d..'
+      # - 'int.nvbridge_api_update_double.struct.nvbridge_api_ctx..ctx..const.char..name..uint16_t.len..double.d..'
+      # - 'int.nvbridge_api_update_double_sync.struct.nvbridge_api_ctx..ctx..const.char..name..uint16_t.len..double.d..'
       # these are helper functions created for unit testing, don't mock them cuz cmock doesn't like their parameters
       - 'void.canserver_test_disconnect.void..'
       - 'void.canserver_test_connect.void..'
